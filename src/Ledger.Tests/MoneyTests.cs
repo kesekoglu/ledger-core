@@ -58,4 +58,28 @@ public class MoneyTests
         Assert.Equal(0.3m, m1 + m2);
     }
 
+    [Fact]
+    public void Equals_SameAmountAndCurrency_ReturnsTrue()
+    {
+        var a = new Money(10, "TRY");
+        var b = new Money(10, "TRY");
+        Assert.Equal(a, b);
+    }
+
+    [Fact]
+    public void GetHashCode_SameAmountAndCurrency_ShouldHaveOneHashElement()
+    {
+        var set = new HashSet<Money>();
+        set.Add(new Money(10, "TRY"));
+        set.Add(new Money(10, "TRY"));
+        Assert.Equal(1, set.Count);
+    }
+
+    [Fact]
+    public void Equals_SameAmountAndDifferentCurrency_ReturnsFalse()
+    {
+        var a = new Money(10, "TRY");
+        var b = new Money(10, "USD");
+        Assert.NotEqual(a,b);
+    }
 }
