@@ -80,6 +80,17 @@ public class MoneyTests
     {
         var a = new Money(10, "TRY");
         var b = new Money(10, "USD");
-        Assert.NotEqual(a,b);
+        Assert.NotEqual(a, b);
+    }
+
+    [Fact]
+    public void EqualityOperator_SameAmountAndCurrency_ReturnsFalse()
+    {
+        var a = new Money(10, "TRY");
+        var b = new Money(10, "TRY");
+
+        bool areEqual = (a == b);
+
+        Assert.False(areEqual);
     }
 }
