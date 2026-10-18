@@ -7,7 +7,6 @@ namespace Ledger.Tests
 {
     public class FeePolicyTests
     {
-
         [Fact]
         public void FlatFeeCalculator_CorrectAmountAndCurrency_ReturnsFeeAmount()
         {
@@ -39,7 +38,6 @@ namespace Ledger.Tests
             Assert.Equal(new Money(10, "TRY"), a);
             Assert.Equal(new Money(5, "TRY"), b);
         }
-
     }
 
     public class TieredFeePolicy() : IFeePolicy
