@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Ledger.Domain
 {
-    internal class FeeCalculator
+    public class FeeCalculator
     {
         public Money Calculate(Money amount, string feeType)
         {
