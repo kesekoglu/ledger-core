@@ -18,7 +18,7 @@ namespace Ledger.Domain
             Balance = Balance.Add(amount);
         }
 
-        public void Withdraw(Money amount)
+        public virtual void Withdraw(Money amount)
         {
             if (Balance.Amount < amount.Amount) throw new ArgumentException("Don't have enough money");
             Balance = Balance.Subtract(amount);

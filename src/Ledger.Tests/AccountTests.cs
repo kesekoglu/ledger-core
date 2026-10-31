@@ -47,6 +47,20 @@ public class AccountTests
     }
 
     [Fact]
+    public void WithdrawFromFixedDepositAccount_SufficentBalance_DecreasesBalance()
+    {
+        var m1 = new Money(100m, "TRY");
+        var m2 = new Money(30m, "TRY");
+        var m3 = new Money(70m, "TRY");
+
+        Account a1 = new FixedDepositAccount(m1);
+
+        a1.Withdraw(m2);
+
+        Assert.Equal(m3, a1.Balance);
+    }
+
+    [Fact]
     public void Deposit_DifferentCurrency_ThrowsCurrencyMismatchException()
     {
         var m1 = new Money(100m, "TRY");
