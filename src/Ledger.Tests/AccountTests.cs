@@ -73,4 +73,61 @@ public class AccountTests
         Assert.Equal(m3, a1.Balance);
     }
 
+    [Fact]
+    public void Withdraw_AfterMaturity_DecreasesBalance()
+    {
+        var m1 = new Money(100m, "TRY");
+        var m2 = new Money(30m, "TRY");
+        var m3 = new Money(70m, "TRY");
+
+        var maturityDate = new DateTime(2025, 1, 1);
+        var today = new DateTime(2026, 1, 1);
+
+        var todayClock = new FakeClock(today);
+
+        var a1 = new FixedDepositAccount(m1, maturityDate, todayClock);
+
+        a1.Withdraw(m2);
+
+        Assert.Equal(m3, a1.Balance);
+    }
+
+    [Fact]
+    public void Withdraw_BeforeMaturity_ThrowsArgumentException()
+    {
+        var m1 = new Money(100m, "TRY");
+        var m2 = new Money(30m, "TRY");
+
+        var maturityDate = new DateTime(2026, 1, 1);
+        var today = new DateTime(2025, 1, 1);
+
+        var todayClock = new FakeClock(today);
+
+        var a1 = new FixedDepositAccount(m1, maturityDate, todayClock);
+
+        var ex = Assert.Throws<ArgumentException>(() => a1.Withdraw(m2));
+
+        Assert.Equal("Can't draw money before Maturity Date", ex.Message);
+
+    }
+
+    [Fact]
+    public void Withdraw_OnMaturityDate_DecreasesBalance()
+    {
+        var m1 = new Money(100m, "TRY");
+        var m2 = new Money(30m, "TRY");
+        var m3 = new Money(70m, "TRY");
+
+        var maturityDate = new DateTime(2026, 1, 1);
+        var today = new DateTime(2026, 1, 1);
+
+        var todayClock = new FakeClock(today);
+
+        var a1 = new FixedDepositAccount(m1, maturityDate, todayClock);
+
+        a1.Withdraw(m2);
+
+        Assert.Equal(m3, a1.Balance);
+    }
+
 }
