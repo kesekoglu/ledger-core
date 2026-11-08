@@ -12,7 +12,7 @@ public class AccountTests
         var m2 = new Money(50m, "TRY");
         var m3 = new Money(150m, "TRY");
 
-        var a1 = new CurrentAccount(m1);
+        var a1 = new CurrentAccount(m1, 1);
 
         a1.Deposit(m2);
 
@@ -26,7 +26,7 @@ public class AccountTests
         var m2 = new Money(30m, "TRY");
         var m3 = new Money(70m, "TRY");
 
-        var a1 = new CurrentAccount(m1);
+        var a1 = new CurrentAccount(m1, 1);
 
         a1.Withdraw(m2);
 
@@ -39,7 +39,7 @@ public class AccountTests
         var m1 = new Money(50m, "TRY");
         var m2 = new Money(100m, "TRY");
 
-        var a1 = new CurrentAccount(m1);
+        var a1 = new CurrentAccount(m1, 1);
 
         var ex = Assert.Throws<ArgumentException>(() => a1.Withdraw(m2));
 
@@ -52,7 +52,7 @@ public class AccountTests
         var m1 = new Money(100m, "TRY");
         var m2 = new Money(50m, "USD");
 
-        var a1 = new CurrentAccount(m1);
+        var a1 = new CurrentAccount(m1, 1);
 
         var ex = Assert.Throws<CurrencyMismatchException>(() => a1.Deposit(m2));
 
@@ -66,7 +66,7 @@ public class AccountTests
         var m2 = new Money(100m, "TRY");
         var m3 = new Money(0m, "TRY");
 
-        var a1 = new CurrentAccount(m1);
+        var a1 = new CurrentAccount(m1, 1);
 
         a1.Withdraw(m2);
 
@@ -85,7 +85,7 @@ public class AccountTests
 
         var todayClock = new FakeClock(today);
 
-        var a1 = new FixedDepositAccount(m1, maturityDate, todayClock);
+        var a1 = new FixedDepositAccount(m1, maturityDate, todayClock, 1);
 
         a1.Withdraw(m2);
 
@@ -103,7 +103,7 @@ public class AccountTests
 
         var todayClock = new FakeClock(today);
 
-        var a1 = new FixedDepositAccount(m1, maturityDate, todayClock);
+        var a1 = new FixedDepositAccount(m1, maturityDate, todayClock, 1);
 
         var ex = Assert.Throws<ArgumentException>(() => a1.Withdraw(m2));
 
@@ -123,7 +123,7 @@ public class AccountTests
 
         var todayClock = new FakeClock(today);
 
-        var a1 = new FixedDepositAccount(m1, maturityDate, todayClock);
+        var a1 = new FixedDepositAccount(m1, maturityDate, todayClock, 1);
 
         a1.Withdraw(m2);
 

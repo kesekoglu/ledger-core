@@ -7,7 +7,7 @@ namespace Ledger.Domain
 {
     public class CurrentAccount : Account, IWithdrawable
     {
-        public CurrentAccount(Money initialBalance) : base(initialBalance) { }
+        public CurrentAccount(Money initialBalance, int id) : base(initialBalance, id) { }
 
         public void Withdraw(Money amount)
         {

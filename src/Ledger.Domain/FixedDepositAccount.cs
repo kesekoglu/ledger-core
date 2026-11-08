@@ -10,7 +10,7 @@ namespace Ledger.Domain
         IClock _clock;
 
 
-        public FixedDepositAccount(Money initialBalance, DateTime maturityDate, IClock clock) : base(initialBalance) 
+        public FixedDepositAccount(Money initialBalance, DateTime maturityDate, IClock clock, int id) : base(initialBalance, id) 
         {
             _maturityDate = maturityDate;
             _clock = clock;
