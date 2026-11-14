@@ -6,6 +6,23 @@ namespace Ledger.Tests;
 public class MoneyTests
 {
     [Fact]
+    public void Equals_String_ReturnsFalse()
+    {
+        var s1 = "string trial";
+        var m1 = new Money(100m, "TRY");
+
+        Assert.False(m1.Equals(s1));
+    }
+
+    [Fact]
+    public void Equals_Null_ReturnsFalse()
+    {
+        var m1 = new Money(100m, "TRY");
+
+        Assert.False(m1.Equals(null));
+    }
+
+    [Fact]
     public void Constructor_NegativeAmount_ThrowsArgumentException()
     {
         Assert.Throws<ArgumentException>(() => new Money(-10m, "USD"));

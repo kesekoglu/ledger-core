@@ -1,13 +1,29 @@
-﻿namespace Ledger.Domain
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Ledger.Domain
 {
-    public class Money
+    public class Money : IEquatable<Money>
     {
         public decimal Amount { get; }
         public string Currency { get; }
 
         public override bool Equals(object? obj)
         {
-            if(obj is Money m && Currency == m.Currency && Amount == m.Amount)
+            if (obj is Money m)
+            {
+                return Equals(m);
+            }
+            return false;
+        }
+
+        public bool Equals(Money? money)
+        {
+            if(money is null) 
+            {
+                return false;
+            }
+
+            if (Currency == money.Currency && Amount == money.Amount)
             {
                 return true;
             }
