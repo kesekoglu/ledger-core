@@ -1,5 +1,4 @@
 ﻿using Ledger.Domain;
-using Xunit;
 
 namespace Ledger.Tests;
 
@@ -101,13 +100,21 @@ public class MoneyTests
     }
 
     [Fact]
-    public void EqualityOperator_SameAmountAndCurrency_ReturnsFalse()
+    public void EqualityOperator_SameAmountAndCurrency_ReturnsTrue()
     {
         var a = new Money(10, "TRY");
         var b = new Money(10, "TRY");
 
         bool areEqual = (a == b);
 
-        Assert.False(areEqual);
+        Assert.True(areEqual);
+    }
+
+    [Fact]
+    public void EqualityOperator_BothNull_ReturnsTrue()
+    {
+        Money? a = null;
+        Money? b = null;
+        Assert.True(a == b);
     }
 }

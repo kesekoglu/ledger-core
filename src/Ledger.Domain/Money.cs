@@ -1,4 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Diagnostics;
 
 namespace Ledger.Domain
 {
@@ -6,6 +6,19 @@ namespace Ledger.Domain
     {
         public decimal Amount { get; }
         public string Currency { get; }
+
+        public static bool operator ==(Money? left, Money? right)
+        {
+            if (left is null) return right is null;
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Money? left, Money? right)
+        {
+
+            if (left is null) return right is not null;
+            return !(left.Equals(right));
+        }
 
         public override bool Equals(object? obj)
         {
