@@ -43,6 +43,7 @@ namespace Ledger.Tests
 
             var ex = Assert.Throws<ArgumentException>(() => service.Transfer(from.Id, to.Id, transferAmount));
 
+            Assert.Equal(100m, to.Balance.Amount);
             Assert.Equal("Can't withdraw from this account", ex.Message);
         }
 
