@@ -18,6 +18,11 @@ namespace Ledger.Domain
             var from = _repo.GetById(fromId);
             var to = _repo.GetById(toId);
 
+            if (from.Balance.Currency != amount.Currency || amount.Currency != to.Balance.Currency)
+            {
+                throw new CurrencyMismatchException("Cannot add different currencies");
+            }
+
             if (from is IWithdrawable w) w.Withdraw(amount);
             else throw new ArgumentException("Can't withdraw from this account");
             to.Deposit(amount);
