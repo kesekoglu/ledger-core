@@ -9,6 +9,34 @@ namespace Ledger.Domain
         public int Id { get; }
         public Money Balance { get; protected set; }
 
+        public override bool Equals(object? obj)
+        {
+            if (obj is Account a)
+            {
+                return Equals(a);
+            }
+            return false;
+        }
+
+        public bool Equals(Account? account)
+        {
+            if (account is null)
+            {
+                return false;
+            }
+
+            if (Id == account.Id)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
+        }
+
         public Account(Money initialBalance, int id)
         {
             Balance = initialBalance;

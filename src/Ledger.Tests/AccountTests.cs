@@ -130,4 +130,22 @@ public class AccountTests
         Assert.Equal(m3, a1.Balance);
     }
 
+    [Fact]
+    public void Equals_SameIdDifferentBalance_ReturnsTrue()
+    {
+        var before = new Account(new Money(100m, "TRY"), 1);
+        var after = new Account(new Money(500m, "TRY"), 1);
+
+        Assert.True(before.Equals(after));
+    }
+
+    [Fact]
+    public void Equals_DifferentIdSameBalance_ReturnsFalse()
+    {
+        var first = new Account(new Money(100m, "TRY"), 1);
+        var second = new Account(new Money(100m, "TRY"), 2);
+
+        Assert.False(first.Equals(second));
+    }
+
 }
