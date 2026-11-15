@@ -148,4 +148,16 @@ public class AccountTests
         Assert.False(first.Equals(second));
     }
 
+    [Fact]
+    public void HashSet_AfterDeposit_StillContainsAccount()
+    {
+        var account = new CurrentAccount(new Money(100m, "TRY"), 1);
+        var set = new HashSet<Account> { account };
+
+        account.Deposit(new Money(50m, "TRY"));
+
+        Assert.Equal(150m, account.Balance.Amount);
+        Assert.True(set.Contains(account));
+    }
+
 }
