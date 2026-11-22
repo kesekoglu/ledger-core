@@ -11,7 +11,7 @@ namespace Ledger.Tests
         public void GetByID_ExistingId_ReturnsAccount()
         {
             var m1 = new Money(100m, "TRY");
-            var a1 = new Account(m1, 1);
+            var a1 = new FakeAccount(m1, 1);
             var repo = new InMemoryAccountRepository();
             repo.AddAccount(a1);
 
