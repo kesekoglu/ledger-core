@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Ledger.Domain
+﻿namespace Ledger.Domain
 {
     public class Money : IEquatable<Money>
     {

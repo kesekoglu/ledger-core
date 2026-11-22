@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Ledger.Domain;
+﻿using Ledger.Domain;
 
 namespace Ledger.Tests
 {

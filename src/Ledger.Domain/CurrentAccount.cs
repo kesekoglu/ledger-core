@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-
-namespace Ledger.Domain
+﻿namespace Ledger.Domain
 {
     public class CurrentAccount : Account, IWithdrawable
     {
