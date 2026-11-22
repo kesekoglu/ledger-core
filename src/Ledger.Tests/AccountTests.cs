@@ -20,7 +20,7 @@ public class AccountTests
     }
 
     [Fact]
-    public void Withdraw_SufficentBalance_DecreasesBalance()
+    public void Withdraw_SufficientBalance_DecreasesBalance()
     {
         var m1 = new Money(100m, "TRY");
         var m2 = new Money(30m, "TRY");
@@ -34,7 +34,7 @@ public class AccountTests
     }
 
     [Fact]
-    public void Withdraw_InsufficentBalance_ThrowsArgumentException()
+    public void Withdraw_InsufficientBalance_ThrowsArgumentException()
     {
         var m1 = new Money(50m, "TRY");
         var m2 = new Money(100m, "TRY");
