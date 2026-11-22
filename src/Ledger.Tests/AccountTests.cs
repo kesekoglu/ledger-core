@@ -133,8 +133,8 @@ public class AccountTests
     [Fact]
     public void Equals_SameIdDifferentBalance_ReturnsTrue()
     {
-        var before = new Account(new Money(100m, "TRY"), 1);
-        var after = new Account(new Money(500m, "TRY"), 1);
+        var before = new FakeAccount(new Money(100m, "TRY"), 1);
+        var after = new FakeAccount(new Money(500m, "TRY"), 1);
 
         Assert.True(before.Equals(after));
     }
@@ -142,8 +142,8 @@ public class AccountTests
     [Fact]
     public void Equals_DifferentIdSameBalance_ReturnsFalse()
     {
-        var first = new Account(new Money(100m, "TRY"), 1);
-        var second = new Account(new Money(100m, "TRY"), 2);
+        var first = new FakeAccount(new Money(100m, "TRY"), 1);
+        var second = new FakeAccount(new Money(100m, "TRY"), 2);
 
         Assert.False(first.Equals(second));
     }

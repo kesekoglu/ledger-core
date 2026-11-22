@@ -32,7 +32,7 @@ namespace Ledger.Tests
         {
             var money = new Money(100m, "TRY");
             var transferAmount = new Money(30m, "TRY");
-            var from = new Account(money, 1);
+            var from = new FakeAccount(money, 1);
             var to = new CurrentAccount(money, 2);
 
             var repo = new InMemoryAccountRepository();
@@ -143,7 +143,7 @@ namespace Ledger.Tests
         {
             var money = new Money(100m, "TRY");
             var transferAmount = new Money(30m, "TRY");
-            var from = new Account(money, 1);
+            var from = new FakeAccount(money, 1);
             var to = new CurrentAccount(money, 2);
             var repo = new InMemoryAccountRepository();
             repo.AddAccount(from);

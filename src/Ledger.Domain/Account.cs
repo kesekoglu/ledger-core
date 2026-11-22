@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ledger.Domain
 {
-    public class Account
+    public abstract class Account
     {
         public int Id { get; }
         public Money Balance { get; protected set; }
